@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Two Wheeler Parking</title>
+  <style>
+    .slot {
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+      display: inline-block;
+      text-align: center;
+      line-height: 50px;
+      cursor: pointer;
+      border: 1px solid #333;
+    }
+    .free { background-color: green; color: white; }
+    .occupied { background-color: red; color: white; }
+  </style>
+</head>
+<body>
+  <h2>Two Wheeler Parking</h2>
+  <div id="zoneA">
+    <h3>Zone A</h3>
+    <div class="slot free" onclick="bookSlot('A',1)">1</div>
+    <div class="slot free" onclick="bookSlot('A',2)">2</div>
+    <div class="slot occupied" onclick="bookSlot('A',3)">3</div>
+    <div class="slot free" onclick="bookSlot('A',4)">4</div>
+    <div class="slot occupied" onclick="bookSlot('A',5)">5</div>
+  </div>
+
+  <div id="zoneB">
+    <h3>Zone B</h3>
+    <div class="slot free" onclick="bookSlot('B',1)">1</div>
+    <div class="slot occupied" onclick="bookSlot('B',2)">2</div>
+    <div class="slot free" onclick="bookSlot('B',3)">3</div>
+    <div class="slot free" onclick="bookSlot('B',4)">4</div>
+  </div>
+
+  <script>
+    function bookSlot(zone, number) {
+      let slot = event.target;
+
+      if (slot.classList.contains("occupied")) {
+        alert("Slot " + number + " in Zone " + zone + " is already occupied!");
+      } else {
+        let confirmBooking = confirm("Do you want to book Slot " + number + " in Zone " + zone + "?");
+        if (confirmBooking) {
+          slot.classList.remove("free");
+          slot.classList.add("occupied");
+          alert("Slot " + number + " in Zone " + zone + " booked successfully!");
+          // Here you would send data to backend (AJAX/Fetch API)
+        }
+      }
+    }
+  </script>
+</body>
+</html>
