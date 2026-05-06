@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Four Wheeler Parking</title>
+  <style>
+    .slot {
+      width: 70px;
+      height: 70px;
+      margin: 8px;
+      display: inline-block;
+      text-align: center;
+      line-height: 70px;
+      cursor: pointer;
+      border: 2px solid #333;
+      font-weight: bold;
+    }
+    .free { background-color: green; color: white; }
+    .occupied { background-color: red; color: white; }
+  </style>
+</head>
+<body>
+  <h2>Four Wheeler Parking</h2>
+  <div id="zoneC">
+    <h3>Zone C</h3>
+    <div class="slot free" onclick="bookSlot('C',1)">1</div>
+    <div class="slot free" onclick="bookSlot('C',2)">2</div>
+    <div class="slot occupied" onclick="bookSlot('C',3)">3</div>
+    <div class="slot free" onclick="bookSlot('C',4)">4</div>
+  </div>
+
+  <script>
+    function bookSlot(zone, number) {
+      let slot = event.target;
+
+      if (slot.classList.contains("occupied")) {
+        alert("Slot " + number + " in Zone " + zone + " is already occupied!");
+      } else {
+        let confirmBooking = confirm("Do you want to book Slot " + number + " in Zone " + zone + " for your car?");
+        if (confirmBooking) {
+          slot.classList.remove("free");
+          slot.classList.add("occupied");
+          alert("Slot " + number + " in Zone " + zone + " booked successfully!");
+          // Backend update here (e.g., send to server)
+        }
+      }
+    }
+  </script>
+</body>
+</html>
