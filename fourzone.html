@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .slot { width: 100px; height: 50px; margin: 5px; text-align: center; line-height: 50px; color: white; cursor: pointer; }
+    .occupied { background-color: red; }
+    .free { background-color: green; }
+  </style>
+</head>
+<body>
+  <h2>Zone A</h2>
+  <div class="slot free" onclick="toggleSlot(this)">Slot1</div>
+  <div class="slot occupied" onclick="toggleSlot(this)">Slot2</div>
+  <div class="slot free" onclick="toggleSlot(this)">Slot3</div>
+
+  <h2>Zone B</h2>
+  <div class="slot free" onclick="toggleSlot(this)">Slot4</div>
+  <div class="slot occupied" onclick="toggleSlot(this)">Slot5</div>
+  <div class="slot free" onclick="toggleSlot(this)">Slot6</div>
+
+  <script>
+    function toggleSlot(element) {
+      if (element.classList.contains("free")) {
+        element.classList.remove("free");
+        element.classList.add("occupied");
+      } else {
+        element.classList.remove("occupied");
+        element.classList.add("free");
+      }
+    }
+  </script>
+</body>
+</html>
